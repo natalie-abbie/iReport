@@ -6,10 +6,13 @@
   /* container */
 
 /* footer */
-.footer{
+footer{
   background-color:#21b0f1;
-  margin-top:40%;
-  padding:5%;
+  margin-top:50%;
+  padding:2%;
+  color:white;
+  text-align:center;
+  
 }
 
 
@@ -391,3 +394,7 @@ nav li ul li {
    display:block;
    background-color:white;
  }
+
+
+ /* grid-css */
+ 
