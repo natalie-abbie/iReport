@@ -1,9 +1,10 @@
 import unittest
-from flask import app
+from testbase import BaseTestCase
+# from flask import app
 from flask import json
 
-class Useroperations(unittest.TestCase):
-    client = app.test_base()
+class Useroperations(BaseTestCase):
+   #  client = app.testbase()
     user = {
             "firstname":"Abio",
             "secondname": "Nataline",
@@ -73,8 +74,7 @@ class Useroperations(unittest.TestCase):
        self.assertEqual(400, response.status_code)
 
 
-class Redflag(unittest.TestCase):
-    client = app.test_base()
+class Redflag(BaseTestCase):
     flag = {
        'location': "Bwaise",
        'type': "bribery",
