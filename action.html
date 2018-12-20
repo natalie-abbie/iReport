@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="css/loop.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/test.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/grid.css" />
+
+   
+</head>
+<body>
+
+    <div id="header">
+            <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="adminstatus.html">Admin</a></li>
+                        <li><a href="action.html">take action</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">login</a></li>
+                        <li><a href="#" >logout</a></li>
+                    </ul>
+                    </nav>
+    </div>
+
+    <h1>Kindly select an action to draw your red flag or intervention closer for inspection</h1>
+    <div class="article column1"> 
+                <a href="action.html"><button class="act">Report corruption</button></a> 
+            </div>
+        
+            <div class="article column1">
+            <a href="report.html"><button class="act">intervention</button></a>
+            </div>
+        </div>
+        
+    
+           
+        <form id="msform">
+                    
+                    <fieldset>
+                            <h2 class="fs-title">Location</h2>
+                            <h3 class="fs-subtitle">please choose the location of incidence</h3>
+                                  <select name="Districts">
+                                  <option value="Districts">kampala</option>
+                                  <option value="Districts">Busia</option>
+                                  <option value="Districts">Mubende</option>
+                                  <option value="Districts">Iganga</option>
+                                  <option value="Districts">Adjumani</option>
+                                  <option value="Districts">Arua</option>
+                                  </select>
+                                  <a href="form1.html"><input type="button" name="previous" class="previous action-button" value="Previous" /></a>
+                                  <a href="form3.html"><input type="button" name="next" class="next action-button" value="next" /></a>
+                          </fieldset>
+        
+                <div class="article columna">
+                
+                            <fieldset>
+                              <h2 class="fs-title">Select corruption incidence</h2>
+                                        <h3 class="fs-subtitle">select a red flag or intervention</h3>
+                                              <select name="action">
+                                              <option value="action">red flag</option>
+                                              <option value="action">intervention</option>
+                                              </select>
+                            
+                              <div id="column">   
+                                      <h3>ABUSE OF POWER</h3>
+                                      
+                                       <input type="checkbox" id="funds" name="funds"checked>
+                                       <label for="funds">Abuse of Public funds</label>
+                                       <input type="checkbox" id="assets" name="assets"checked>
+                                       <label for="funds">Abuse of assets</label>
+                                       <input type="checkbox" id="position" name="position"checked>
+                                       <label for="funds">Abuse of Position</label>
+                                
+                                      <h3>EMPLOYMENT</h3> 
+                                      
+                                          <input type="checkbox" id="job" name="job"checked>
+                                          <label for="job">corruption to get a job</label>
+                                          <input type="checkbox" id="worker" name="worker"checked>
+                                          <label for="workers">Ghost worker</label>
+                                          <input type="checkbox" id="position" name="position"checked>
+                                          <label for="position">Abuse of Position</label>
+                                    
+                                
+                                  <h3>BRIBERY</h3>
+                                 
+                                          <input type="checkbox" id="Embezzlement" name="Embezzlement"checked>
+                                          <label for="Embezzlement">Embezzlement of funds</label>
+                                          <input type="checkbox" id="graft" name="graft"checked>
+                                          <label for="graft">graft</label>
+                                          <input type="checkbox" id="pay" name="pay"checked>
+                                          <label for="pay">payoffs</label>
+                                      
+                              <a href ="form1.html"><input type="button" name="next" class="next action-button" value="Next" /></a>
+                            </fieldset>
+                        </div>
+                          
+                </div>
+                <div class="article columnb">
+                 
+                    <fieldset>
+                            <h2 class="fs-title">Description of incidence</h2>
+                            <h3 class="fs-subtitle">select the entity involved</h3>
+                            <input type="checkbox" id="govt" name="govt"checked>
+                            <label for="govt">Local Government</label>
+                            <input type="checkbox" id="graft" name="graft"checked>
+                            <label for="graft">National Government</label>
+                            <input type="checkbox" id="pay" name="pay"checked>
+                            <label for="pay">IGG</label>
+                            <input type="checkbox" id="pay" name="pay"checked>
+                            <label for="pay">Others</label>
+                            <a href="report.html"><input type="button" name="previous" class="previous action-button" value="Previous" /></a>
+                           <a href="form2.html"><input type="button" name="next" class="next action-button" value="Next" /></a>
+                          </fieldset>
+                </div>
+                <div class="article columnc">
+                              
+                    <fieldset>
+                            <h2 class="fs-title">MEDIA</h2>
+                            <h3 class="fs-subtitle">kindly share an image, recorded audio or video of the incident</h3>
+                            <label for="username">Date of reporting</label>
+                            <input type="date" name="report" />
+                            <input type="submit" value="Submit" />
+                            <p>Upload your media:</p>
+                            <input type="file" name="user-media" /><br />
+                            <input type="submit" value="Upload" />  
+                        </fieldset>
+                </div>
+            </form>
+    </div>
+
+   
+        <br>
+    <div id="footer">
+                <p>&copy; Copyright 2018</p>
+    </div>
+</div>
+
+</body>
+</html>

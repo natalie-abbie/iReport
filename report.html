@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/loop.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/test.css" />
+    <script src="loop.js"></script>
+</head>
+<body>
+        <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="adminstatus.html">Admin</a></li>
+                    <li><a href="report.html">take action</a></li>
+                    <li><a href="#" >logout</a></li>
+                    </ul>
+                </ul>
+                </nav>
+    
+    <!-- multistep form -->
+    <h1> Welcome to the iReporter online secured platform</h1>
+    <p>All reports submitted to Corruption Watch are treated with care and processed in a safe and secure environment. We will not share any details or identifying information with anyone else without permission.</p>
+
+    <!-- form -->
+    <h1>Please follow the steps to report your incidence </h1>
+<form id="msform">
+        <!-- progressbar -->
+        <ul id="progressbar">
+          <li class="active">select corruption incidence</li>
+          <li>description of incidence</li>
+          <li>location </li>
+        </ul>
+        <!-- fieldsets -->
+        <fieldset>
+          <h2 class="fs-title">Select corruption incidence</h2>
+          <h3 class="fs-subtitle">This is step 1</h3>
+        
+          <div id="column">   
+                  <h3>ABUSE OF POWER</h3>
+                  
+                   <input type="checkbox" id="funds" name="funds"checked>
+                   <label for="funds">Abuse of Public funds</label>
+                   <input type="checkbox" id="assets" name="assets"checked>
+                   <label for="funds">Abuse of assets</label>
+                   <input type="checkbox" id="position" name="position"checked>
+                   <label for="funds">Abuse of Position</label>
+            
+                  <h3>EMPLOYMENT</h3> 
+                  <form>
+                      <input type="checkbox" id="job" name="job"checked>
+                      <label for="job">corruption to get a job</label>
+                      <input type="checkbox" id="worker" name="worker"checked>
+                      <label for="workers">Ghost worker</label>
+                      <input type="checkbox" id="position" name="position"checked>
+                      <label for="position">Abuse of Position</label>
+                  </form>
+            
+              <h3>BRIBERY</h3>
+              <form>
+                      <input type="checkbox" id="Embezzlement" name="Embezzlement"checked>
+                      <label for="Embezzlement">Embezzlement of funds</label>
+                      <input type="checkbox" id="graft" name="graft"checked>
+                      <label for="graft">graft</label>
+                      <input type="checkbox" id="pay" name="pay"checked>
+                      <label for="pay">payoffs</label>
+                  </form>
+          <a href ="form1.html"><input type="button" name="next" class="next action-button" value="Next" /></a>
+        </fieldset>
+    </div>
+      
+      </form>
+      
+      </body>
+      </html>

@@ -1,0 +1,129 @@
+
+.status-board {
+  width: 100%;
+  background: rgb(255,255,255);
+  border: 1px solid darkcyan;
+  margin-top:6%;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0px;
+  line-height: 50px;
+  cursor: default;
+  float:left;
+  margin-bottom:9%;
+}
+.status-board  li {
+  height: 50px;
+  border-bottom: 1px solid rgb(220,220,220);
+  text-indent: 15px;
+  color:black;
+}
+.status-board ul li:last-child{
+  border: none;
+}
+.status {
+  display: inline-block;
+  float: right;
+  height: 1em;
+  line-height: 1em;
+  margin: 17px 15px;
+  text-indent: 0;
+  font-family:  'Monaco','Consolas', 'Courier', monospace;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: uppercase;
+  border: 1px solid darkcyan;
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+.blue {
+  color: #2791d9;
+  border-color: #2791d9;
+}
+.green {
+  color: #2ecc71;
+  border-color: #2ecc71;
+}
+.yellow {
+  color: #f1c40f;
+  border-color: #f1c40f;
+}
+.orange {
+  color: #e67e22;
+  border-color: #e67e22;
+}
+.red{
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+/* container */
+.con{
+  background-color:white;
+  display:block;
+  height:80%;
+  width:100%;
+  padding-bottom:10%;
+}
+
+ /* table */
+ table {
+  width: 80%;
+  margin-left: 20%;
+}
+  th, td {
+      padding: 7px 10px 10px 10px;}
+
+  th {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 90%;
+      border-bottom: 2px solid #111111;
+      border-top: 1px solid #999;
+      text-align: left;}
+
+  tr.even {
+      background-color: darkcyan;}
+
+  tr:hover {
+    background-color: #c3e6e5;}
+
+  .acpt {
+    text-align: right;}
+
+ box{
+    background-color: lightgrey;
+    float:left;
+    border: 25px solid darkcyan;
+    padding: 25px;
+    margin-bottom:2%;
+    margin-left:13%;
+  }
+
+  .accept{
+    background-color:green;
+    padding:10px;
+    margin:12px;
+    border-radius:10px;
+  }
+
+  .reject{
+    background-color: red;
+    padding:10px;
+    margin:12px;
+    border-radius:10px;
+  }
+
+  .invest{
+    background-color: lightblue;
+    padding:10px;
+    margin:12px;
+    border-radius:10px;
+  }
+
+  /* .layout{
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px;
+  } */
