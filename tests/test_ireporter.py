@@ -20,9 +20,8 @@ class Useroperations(BaseTestCase):
 
     def test_register_successfully(self):
        
-       response = self.client.post('/api/v1/register', data=json.dumps(self.user), content_type='application/json')
+       response = self.post('/api/v1/register', data=json.dumps(self.user), content_type='application/json')
        data = json.loads(response.data.decode())
-       print(data)
        self.assertEqual('Account created successfully', data['message'])
        self.assertEqual(201, response.status_code)
 
@@ -75,21 +74,20 @@ class Useroperations(BaseTestCase):
 
 
 class Redflag(BaseTestCase):
-    flag = {
+   flag = {
        'location': "Bwaise",
        'type': "bribery",
        'description': "a driver bribing a traffic police officer",
        'media': "photo.jpg"
     }
     
+   def test_redfag_created(self):
 
-    def test_redfag_created(self):
-
-       response = self.client.post('/api/v1/regflag', data=json.dumps(self.flag), content_type='application/json')
-       data = json.loads(response.data.decode())
-       print(data)
-       self.assertEqual('Redflag created', data['message'])
-       self.assertEqual(201, response.status_code)
+      response = self.client.post('/api/v1/regflag', data=json.dumps(self.flag), content_type='application/json')
+      data = json.loads(response.data.decode())
+      print(data)
+      self.assertEqual('Redflag created', data['message'])
+      self.assertEqual(201, response.status_code)
 
      
     

@@ -11,33 +11,33 @@ loggedinuser = []
 def register():
     data = request.get_json()
 
-    firstname = data['firstname']
-    secondname = data['secondname']
-    username = data['username']
+    id = data['id']
+    first_name = data['first_name']
+    lastname = data['lastname']
+    othernames = data['othernames']
     email = data['email']
     password = data['password']
 
     try:
-        firstname = data['firstname']
-        secondname = data['secondname']
-        username = data['username']
+        id = data['id']
+        first_name = data['first_name']
+        lastname = data['lastname']
+        othernames = data['othernames']
         email = data['email']
-        password = data['password']
-
     except KeyError as item:
         return jsonify({'message': str(item)+'missing'}), 400
 
     users = {
-        'firstname': firstname,
-        'secondname': secondname,
-        'username': username,
+        'first_name': first_name,
+        'lastname': lastname,
+        'othernames': othernames,
         'email': email,
         'password': password
     }
     users_list.append(users)
 
     for users in users_list:
-        if not len(firstname) > 0 and not len(secondname) >0 and not len(username) > 0 :
+        if not len(first_name) > 0 and not len(lastname) >0 and not len(othernames) > 0 :
             return jsonify({"message": "field can't be blank"}), 400 
         
         if not len(email) > 0 and not len(password) > 0:
@@ -52,12 +52,12 @@ def login():
 
     data = request.get_json()
 
-    username = data['username']
+    othernames = data['othernames']
     password = data['password']
     role = data['role']
 
     try:
-        username = data['username']
+        othernames = data['othernames']
         password = data['password']
         role = data['role']
 
@@ -65,19 +65,19 @@ def login():
         return jsonify({'message': str(item)+'missing'}), 400
 
     users = {
-        'username': username,
+        'othernames': othernames,
         'password': password,
     }
 
     for users in users_list:
 
-        if not len(username) > 0 and not len(password) > 0:
+        if not len(othernames) > 0 and not len(password) > 0:
             return jsonify({"message": "field can't be blank"}), 400 
 
-        if username == username and password == password:
+        if othernames == othernames and password == password:
             return jsonify({"message": "login successful"}), 200
         
-        if username != username and password != password:
+        if othernames != othernames and password != password:
             return jsonify({"message": "invalid"}), 400
 
         else:
@@ -88,7 +88,7 @@ def login():
 @user.route('/api/v1/session', methods=['POST'])
 def session():
 
-    username = []
+    othernames = []
     optiondata = request.get_json()
 
     option = optiondata["your option"]
