@@ -1,23 +1,8 @@
-/*custom font*/
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-/*basic reset*/
-* {margin: 0; padding: 0;}
-
-html {
-	height: 100%;
-	/*Image only BG fallback*/
-	
-	/*background = gradient + image pattern combo*/
-	
-}
-
-
 /*form styles*/
 #msform {
-	width: 500px;
-	
+	width: 500px;	
 }
+
 #msform fieldset {
 	background: darkred;
 	border: 0 none;
@@ -27,15 +12,22 @@ html {
 	box-sizing: border-box;
 	width: 70%;
 	margin-top:3%;
-	
-	
-	/*stacking fieldsets above each other*/
 
 }
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
 	display: none;
 }
+
+footer{
+	background-color:#21b0f1;
+	margin-top:50%;
+	padding:1%;
+	color:white;
+	text-align:center;
+  }
+  
+
 /*inputs*/
 #msform input, #msform textarea {
 	padding: 15px;
@@ -44,9 +36,9 @@ html {
 	margin-bottom: 10px;
 	width: 100%;
 	box-sizing: border-box;
-	font-family: montserrat;
+	font-family: roboto;
 	color: #2C3E50;
-	font-size: 13px;
+	font-size: 15px;
 }
 /*buttons*/
 #msform .action-button {
@@ -60,6 +52,7 @@ html {
 	padding: 10px 5px;
 	margin: 10px 5px;
 }
+
 #msform .action-button:hover, #msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
@@ -84,9 +77,6 @@ html {
 	/*CSS counters to number the steps*/
 	counter-reset: step;
 }
-
-/*progressbar connectors*/
-
 
 h1{
     text-align:center;
@@ -115,4 +105,10 @@ h3{
 
 .right{
 	float:right;
+}
+
+
+@media (max-width: 1000px) and (min-width: 900px)
+body {
+    background: #888;
 }

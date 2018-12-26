@@ -18,6 +18,16 @@ body {
 	background-color: #fafafa;
 }
 
+footer{
+	background-color:#21b0f1;
+	margin-top:50%;
+	padding:1%;
+	color:white;
+	text-align:center;
+  }
+  
+
+
 .container {
 	max-width: 100rem;
 	margin: 0 auto;

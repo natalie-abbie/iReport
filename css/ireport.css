@@ -1,18 +1,6 @@
 
-/* $color-primary: red; */
 
 
-
-body {
-    font-family: roboto;
-    font-size: 14px;
-    background-size: 200% 100% !important;
-    animation: move 10s;
-    transform: translate3d(0, 0, 0);
-    background: white;
-    height: 100vh;
-    margin-bottom:20%;
-}
 /* navigation bar */
 header {
     text-align: left;
@@ -33,14 +21,14 @@ header {
     background-position:fixed; 
   }
 
-  .footer{
-    background-color: #21b0f1;
-    display:inline-block;
-    width:100%;
-    height:50%;
-    margin-top:30%;
+  footer{
+    background-color:#21b0f1;
+    margin-top:10%;
+    padding:1%;
+    color:white;
+    text-align:center;
   }
-  
+
   nav li {
     width: 120px;
     border-bottom:none;
@@ -88,8 +76,8 @@ header {
   /*end  */
 
 .user {
-    width: 90%;
-    max-width: 50%;
+    width: 100%;
+    max-width: 100%;
     margin: 10% auto;
 }
 
@@ -104,10 +92,13 @@ header {
     font-size: roboto;
     margin-bottom: 10px;
     font-weight: 500;
-    color: #21b0f1;
+    color: white;
+    text-decoration: underline;
+    text-align:center;
 }
 /* format form */
 .form {
+    width: 100%;
     border-radius: 6px;
     overflow: hidden;
     opacity: 1;
@@ -124,10 +115,8 @@ header {
 .form__input {
     display: block;
     width: 100%;
-    padding: 20px;
     font-family: roboto;
     -webkit-appearance: none;
-    border-left-color:#21b0f1;
     outline: 0;
     transition: 0.3s;
     color:black;

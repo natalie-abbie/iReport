@@ -1,70 +1,61 @@
 main {
 	display: grid;
-	grid-gap: 16px;
+	grid-gap: 20px;
 	grid-template-columns: repeat(2, 1fr) minmax(50px, 1fr);	
 	grid-template-rows: repeat(10, min-content);
-	// grid-auto-flow will move cells to fit into grid where gaps are made (resize window to see gaps)
-	// grid-auto-flow: dense;
 	
-	@include bp(large) {
-		grid-template-columns: 10vw minmax(50px, 50vw) repeat(2, 1fr);	
-		grid-template-rows: repeat(10, min-content);
-	}
+}
+{
+	width:30%;
+	margin:15px;
 }
 
 [data-grid='grid-cell'] {
-	border-color: rgb(255, 0, 72);
-	
-	&:hover {
-		background: rgb(255, 0, 72);
+	border-color: blue;
+	height:50%;
 	}
-}
+	
+	[data-grid='grid-cell']:hover {
+		background: blue;
+	}
+
 
 [data-grid='grid-column'] {
 	border-color: rgba(2, 143, 118, .8);
 	grid-column: 3;
 	grid-row: 2 / 9;
+	height:50%;
+}
 	
-	@include bp(large) {
-		grid-column: 4;
-		grid-row: 1 / 6;
-	}
+
 	
-	&:hover {
-		background: rgba(2, 143, 118, .8);
+[data-grid='grid-column']:hover {
+		background: red;
 	}
 	
 	// Showing overlap
 	position: relative;
 
-	&:after {
-		background: hsla(0, 0%, 10%, .4);
-		bottom: 0;
-		color: hsl(0, 0, 100%);
-		content: "As you can see, grid tracks can overlap";
-		left: 0;
-		padding: .7rem;
-		position: absolute;
-		right: 0;
-	}
-}
+
+
 
 [data-grid='grid-area'] {
-	border-color: rgb(138, 0, 84);
+	border-color:darkred;
 	grid-column: 1 / span 2;
 	grid-row: span 3;
-	
+	}
+
 	@include bp(large) {
 		grid-column: 2;
 	}
 	
-	&:hover {
-		background: rgb(138, 0, 84);
+[data-grid='grid-area']:hover {
+		background: darkred;
 	}
-}
+
 
 [data-grid='grid-row'] {
-	background: rgba(255, 255, 255, .5);
+	background:#21b0f1;
 	border-color: rgba(38, 95, 163, .8);
    grid-column: 1 / -1; // -1 jumps to the last grid line to count from the end
 	grid-row: 8;
@@ -88,8 +79,6 @@ main {
 	}
 }
 
-// Styles for fun
-// -------------------------------------------------
 @import url('https://fonts.googleapis.com/css?family=Scope+One|Open+Sans:700');
 
 .body-home {
@@ -97,7 +86,6 @@ main {
 	color: rgb(113, 115, 136);
 	font-family: 'Scope One', sans-serif;
 	font-size: 1rem;
-	line-height: 1;
 	margin: 1rem;	
 }
 
@@ -131,13 +119,36 @@ h2 {
 	}
 }
 
-a {
-	color: #E4844A;
+.fill {
+	display:block;
+	background:red;
+	padding:30px;
+	color:white;
+	font-family:roboto;
+	text-transform:UPPERCASE;
+	text-decoration:none;
+	text-align:center;
+	font-weight: bolder;
 }
+
+.filled{
+	display:block;
+	background:blue;
+	padding:30px;
+	color:white;
+	font-family:roboto;
+	text-transform:UPPERCASE;
+	text-decoration:none;
+	text-align:center;
+	font-weight: bolder;
+}
+
+
 
 .p {
     line-height: 1.5;
-    color:black;
+	color:black;
+	font-family: roboto;
 }
 
 strong {
@@ -145,16 +156,28 @@ strong {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 700;
 	text-transform: uppercase;
+	color:brown;
+	text-decoration: underline;
+	text-align: center;
+	font-family:CaudexBold;
+}
+footer{
+	background-color:#21b0f1;
+	margin-top:50%;
+	padding:1%;
+	color:white;
+	text-align:center;
+  }
+  
+
+
+p {
+	grid-column: 2 / 4;
+	margin-bottom: 5rem;
 }
 
-footer {
-	display: grid;
-	grip-gap: 16px;
-	grid-template-columns: 10vw minmax(50px, 50vw) 1fr 2fr;
-	margin: 0 1rem;
-	
-	p {
-		grid-column: 2 / 4;
-		margin-bottom: 5rem;
-	}
+
+@media (max-width: 1000px) and (min-width: 900px)
+body {
+    background: #888;
 }
