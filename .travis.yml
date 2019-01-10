@@ -1,15 +1,14 @@
-virt
+#language to use in tavis containers
 language: python
-
 python:
-- "3.6.7"
-
+    - "3.6.7"
 install:
-- pip install -r requirements.txt
-
+  - pip install -r Requirements.txt
+# command to run tests
 script:
+  - python -m pytest --cov
 
-- python -m pytest --cov
+sudo: required
 
-after_success:
+after_success: 
 - coveralls
