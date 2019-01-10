@@ -1,10 +1,10 @@
 import unittest
-from testbase import BaseTestCase
-# from flask import app
+from test_base import BaseTestCase
+from flask import app
 from flask import json
 
 class Useroperations(BaseTestCase):
-   #  client = app.testbase()
+    client = app.testbase()
     user = {
             "firstname":"Abio",
             "secondname": "Nataline",

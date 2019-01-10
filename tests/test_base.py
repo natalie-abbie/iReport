@@ -1,6 +1,4 @@
 from unittest import TestCase
-from app import create_app
-
 
 class BaseTestCase(TestCase):
   def setUp(self):
