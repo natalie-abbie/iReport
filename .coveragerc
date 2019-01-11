@@ -5,3 +5,4 @@ omit =
     *venv/*
     *.vscode/
     */site-packages/*
+    
