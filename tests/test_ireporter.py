@@ -1,6 +1,6 @@
 import unittest
-# from flask import Blueprint, Flask, request, json, jsonify, make_response, Response
-from flask import redirect, jsonify, request, Response, json
+from flask import Blueprint, Flask, request, json, jsonify, make_response, Response
+from flask import jsonify, request, Response, json
 from werkzeug.security import generate_password_hash, check_password_hash
 from main.models.model import Redflag, FLAGS
 from main.models.model import User

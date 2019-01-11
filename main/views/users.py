@@ -13,7 +13,6 @@ user = Blueprint('users', __name__)
 SECRETKEY = 'TaLiEatalie'
 token = None
 
-
 loggedinuser = []
 
 # routes for the api
