@@ -1,6 +1,6 @@
 import uuid
 from flask import Flask, Blueprint, jsonify, json, request
-from datetime import datetime as dt
+from datetime import datetime 
 
 flags = Blueprint('flag',__name__)
 
@@ -9,42 +9,52 @@ redflag_list = []
 @flags.route("/api/v1/create_redflag", methods=['POST'])
 def post():
     
-    userdata = request.get_json()
+    
     try:
+        if request.content_type != 'application/json':
+            return jsonify({'Bad request': 'Content-type must be in json'}), 400
+            
+        request_data = request.get_json()
+
+        if not request_data:
+            return jsonify({"Failed": "Request can't be empty"}), 400
+
         flag_id =uuid.uuid1()
-        location = userdata['location']
-        type = userdata['type']
-        description = userdata['description']
-        image = userdata['image']
-        video = userdata['video']
-        created_on = dt.utcnow()
-        created_by = userdata['created_by']
+        location = request_data['location']
+        type = request_data['type']
+        description = request_data['description']
+        image = request_data['image']
+        video = request_data['video']
+        created_on =  datetime.datetime.now()
+        created_by = request_data['created_by']
+        draft = request_data['status']
+
+        data = {
+            'flag_id':uuid.uuid1(),
+            'location': location,
+            'type': type,
+            'description': description,
+            'image': image,
+            'video' : video,
+            'datetime.datetime.now()':created_on,
+            'created_by' : created_by,
+            'status': draft
+        }
+    
+        redflag_list.append(data)
+
+        for data in redflag_list:
+            if not len(location) > 0 and not len(type) >0:
+                return jsonify({"message":"section cant be empty"}), 400
+            
+            if not len(description)> 0 and not len(created_by)>0:
+                return jsonify({"message":"section cant be empty"}), 400
+            
+            else:
+                return jsonify("'status': draft",{'data': redflag_list,"id":flag_id, 'message': "redflag created"}), 201
 
     except KeyError as item:
        return jsonify({'message': str(item) + 'missing'}), 400
-
-    data = {
-        'flag_id':uuid.uuid1(),
-        'location': location,
-        'type': type,
-        'description': description,
-        'image': image,
-        'video' : video,
-        str(dt.utcnow()) : created_on,
-        'created_by' : created_by
-    }
-    
-    redflag_list.append(data)
-
-    for data in redflag_list:
-        if not len(location) > 0 and not len(type) >0:
-            return jsonify({"message":"section cant be empty"}), 400
-        
-        if not len(description):
-            return jsonify({"message":"section cant be empty"}), 400
-        
-        else:
-            return jsonify("'status': 201",{'data': redflag_list,"id":flag_id, 'message': "redflag created"}), 201
 
 # only viewed by admin through the admin access
 @flags.route('/api/v1/redflag', methods=['GET'])

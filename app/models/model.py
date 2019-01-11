@@ -27,7 +27,7 @@ class Redflag:
     class for creating a redflag post 
     """
 
-    def __init__(self, redflag_id, user_id, description, email, location, createdby, createdOn):
+    def __init__(self, redflag_id, user_id, description, email, status, location, createdby, createdOn):
         self.redflag_id = redflag_id
         self.user_id = user_id
         self.description = description
@@ -40,6 +40,11 @@ class Redflag:
     def __str__(self):
         return "redflag_id:{} user_id:{} description:{} email:{} location:{} createdby:{} createdOn:{} status:{} ".format(self.user_id,self.redflag_id,self.description,self.email,self.location,self.createdOn, self.createdby, self.status)
 
-
+    def status(self):
+        """
+        Generate status list for parcel orders
+        """
+        status = ['draft','rejected', 'resolved', 'under_investigation']
+        return status
 
 
