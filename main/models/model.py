@@ -78,7 +78,7 @@ class Redflag:
     class for creating a redflag post 
     """
 
-    def __init__(self, flag_id, user_id, type, description, email, status, location, createdby, createdOn):
+    def __init__(self, flag_id, user_id, type, description, email, location, createdby):
         self.flag_id = flag_id
         self.user_id = user_id
         self.type = type
