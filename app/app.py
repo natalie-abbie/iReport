@@ -1,6 +1,6 @@
 from flask import Flask, json, jsonify, request, Blueprint
-from app.views.users import user
-from app.views.redflag import flags
+from users import user
+from redflag import flags
 
 app = Flask(__name__)
 app.register_blueprint(user)

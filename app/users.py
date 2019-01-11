@@ -69,7 +69,7 @@ def register():
             if len(username) < 3:
                 return jsonify({'Invalid': 'username should be atleast 3 characters'}), 400
 
-            if not username:
+            if len(username) < 0:
                 return jsonify({'Missing':'Username required'}), 400
 
             if not email:
