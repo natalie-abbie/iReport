@@ -8,8 +8,6 @@ from views.users import loggedinuser
 
 flags = Blueprint('flag', __name__)
 
-redflag_list = []
-
 
 @flags.route("/api/v1/create_redflag", methods=['POST'])
 def create_redflag():
@@ -45,40 +43,25 @@ def create_redflag():
         if 'description' not in request_data.keys():
             # bad request
             return jsonify({'message': 'description is missing'}), 400
-
-        if 'createdby' not in request_data.keys():
-            # bad request
-            return jsonify({'message': 'createdby is missing'}), 400
-
-        if 'createdOn' not in request_data.keys():
-            # bad request
-            return jsonify({'message': 'createdOn is missing'}), 400
-
         if len(request_data['description']) < 20:
             # bad request
             return jsonify({'message': 'description should be well defined'}), 400
 
-         # create class object for redflag class
-        flags2 = Redflag(str(uuid4()),loggedinuser[0],request_data['type'], request_data['location'],request_data['description'], request_data['createdby'])
-
-        # parameters [{flag_id:[type,user_id,description,email,location,createdOn,createdby]}]
-        result = flags2.create_redflag()
-
-        if result:
-            # created
-            return jsonify({'message': 'flag successfully created', 'flags':FLAGS}), 201
-
-        # conflict
-        return jsonify({'message': 'flag was not created, try again'}), 400
-
-        # type = request_data['type']
-        # location = request_data['location']
-        description = request_data['description']
-        createdOn= request_data['createdOn']
-        createdby = request_data['createdby']
+        else:
+            description = request_data['description']
+            
+        data={
+              "flag_id": str(uuid4()),
+              "type":type,
+              "location":location,
+              "description":description
+        }
+        loggedinuser.append(data)
+        return jsonify({'message': 'flag successfully created', 'flags':loggedinuser}), 201
 
     except KeyError as item:
         return jsonify({'message': str(item) + 'missing'}), 400
+    return jsonify({'message': 'flag was not created, try again'}), 400
 
 # only viewed by admin through the admin accesselse:
 
@@ -86,25 +69,22 @@ def create_redflag():
 @flags.route('/api/v1/redflag', methods=['GET'])
 def get():
     """"Function that returns all registered flags"""
-    global FLAGS
-    if not FLAGS:
+    global loggedinuser
+
+    if not loggedinuser:
         return jsonify({'message': 'No records found'}), 404  # not found
     else:
-        return jsonify({'flags': FLAGS}), 200
+        return jsonify({'flags': loggedinuser}), 200
 
 
 @flags.route('/api/v1/redflag/<flag_id>', methods=['GET'])
 def get_specific_flag(flag_id):
     """ function to retrieve a single flag by id"""
-    global FLAGS
+    global loggedinuser
 
-    if not FLAGS:
-        # not found
-        return jsonify({'message': 'no records of any flag exist.'}), 404
-    else:
-        result = Redflag.get_specific_flag(id)
-        if result or result == 0:
-            return jsonify({'flag': FLAGS[result]}), 200  # ok
+    for flag_id in loggedinuser:
+        if flag_id == flag_id:
+            return jsonify({'flag': loggedinuser}), 200  # ok
         else:
             # bad request
             return jsonify({'flag': 'no records of that flag exist'}), 400
@@ -120,45 +100,11 @@ def update(flag_id):
         # anauthorized access
         return jsonify({'message': 'you are logged out, please login'}), 401
 
-    if FLAGS:
-
-        request_data = request.get_json()
-
-        exists = Redflag.get_specific_flag(id)
-        flag_id = ''
-
-        if len(request_data.keys()) != 4:
-            # bad request
-            return jsonify({'message': 'some fields are missing, try again'}), 400
-
-        if request_data['type']:
-            type = request_data['type']
-        else:
-            type = ''
-
-        if request_data['location']:
-            location = request_data['location']
-        else:
-            location = ''
-
-        if request_data['media']:
-            media = request_data['media']
-        else:
-            media = ''
-
-        if request_data['description']:
-            description = request_data['description']
-        else:
-            description = ''
-
-        if exists or exists == 0:
-            result = FLAGS[exists]
-            for k in result.items():
-                flag_id = k
-                FLAGS[exists] = {
-                    flag_id: [type, loggedinuser[0], description, location, media]}
-                # ok
-                return jsonify({'message': 'flag has been updated successfully'}), 200
+    for data in FLAGS:
+        if flag_id == flag_id:
+            data[2] = request.get_json()
+            return jsonify({"message":"redflag updated", "update":FLAGS}), 200
+            
         else:
             # not found
             return jsonify({'message': 'no records of that flag exist'}), 404
@@ -205,18 +151,15 @@ def update1(flag_id):
 @flags.route("/api/v1/redflag/<flag_id>", methods=['DELETE'])
 def delete_flag(id):
     """Function is responsible for deleting a flag on parameter passed as id"""
-    global FLAGS
+    global loggedinuser
 
-    if FLAGS:
-        result = Redflag.delete_flag(id)
-        # print(result)
-        if result or result == 0:
-            FLAGS.pop(result)
-            # ok
+    for data in loggedinuser:
+        if flag_id == flag_id:
+            loggedinuser.remove(data)
             return jsonify({'message': 'flag has been successfully deleted'}), 200
         else:
             # bad request
-            return jsonify({'message': 'No flag has that id, nothing was deleted'}), 400
+                return jsonify({'message': 'No flag has that id, nothing was deleted'}), 400
     else:
         # not found
         return jsonify({'message': 'no records of any flag exist'}), 404

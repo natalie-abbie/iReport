@@ -75,14 +75,12 @@ class Redflag:
     class for creating a redflag post 
     """
 
-    def __init__(self, flag_id, type, description, location, createdby, createdOn):
+    def __init__(self, flag_id, type, description, location):
         self.flag_id = flag_id
-        # self.user_id = user_id
         self.type = type
         self.description = description
         self.location = location
         self.createdOn = datetime.datetime.now()
-        self.createdby = createdby
         self.redflag_list = []
 
     def create_redflag(self):
@@ -95,8 +93,8 @@ class Redflag:
         oldflagListLength = len(FLAGS)
         # create the list below with precise indexing as illustrated below
         # [0] = user_id, [1] = type, [2] = description, [3] = email, [4] = location, [5] =createdon [6] = created by
-        FLAGS.append({self.flag_id: [self.type, self.description,
-                                    self.location, self.createdOn, self.createdby]})
+        FLAGS.append({[self.flag_id,self.type, self.description,
+                                    self.location, self.createdOn]})
 
         if len(FLAGS) > oldflagListLength:
             # incase creating a redflag is successful return true.
