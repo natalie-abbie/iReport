@@ -2,7 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ddead5772af47568e87415779bd8a58)](https://www.codacy.com/app/natalie-abbie/iReport?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=natalie-abbie/iReport&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/Toskgreg/StackOverflow-Lite_api.svg?branch=develop)](https://travis-ci.org/Toskgreg/StackOverflow-Lite_api)
-https://coveralls.io/github/Toskgreg/StackOverflow-Lite_api?branch=develop
+
 The iReporter api enables users to register and login to the platform with their correct creditials inorder to report a redf flag or an intervention in line with corruption
 
 ## Built with
