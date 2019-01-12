@@ -1,10 +1,10 @@
 from flask import Flask, Blueprint, jsonify, json, request
 from datetime import datetime
 from functools import wraps
-from main.models.model import FLAGS, Redflag
+from models.model import FLAGS, Redflag
 from uuid import uuid4
 from werkzeug.security import generate_password_hash, check_password_hash
-from main.views.users import loggedinuser
+from views.users import loggedinuser
 
 flags = Blueprint('flag', __name__)
 
@@ -33,10 +33,14 @@ def create_redflag():
         if 'type' not in request_data.keys():
             # bad request
             return jsonify({'message': 'Flag type is missing'}), 400
+        else:
+            type = request_data['type']
 
         if 'location' not in request_data.keys():
             # bad request
             return jsonify({'message': 'location is missing'}), 400
+        else:
+            location = request_data['location']
 
         if 'description' not in request_data.keys():
             # bad request
@@ -48,30 +52,29 @@ def create_redflag():
 
         if 'createdOn' not in request_data.keys():
             # bad request
-            return jsonify({'message': 'createdby is missing'}), 400
+            return jsonify({'message': 'createdOn is missing'}), 400
 
         if len(request_data['description']) < 20:
             # bad request
             return jsonify({'message': 'description should be well defined'}), 400
 
          # create class object for redflag class
-        flags2 = Redflag(str(uuid4()), request_data['type'], loggedinuser[0], request_data['location'],
-                         request_data['description'], request_data['createdby'], request_data['createdOn'])
+        flags2 = Redflag(str(uuid4()),loggedinuser[0],request_data['type'], request_data['location'],request_data['description'], request_data['createdby'])
 
         # parameters [{flag_id:[type,user_id,description,email,location,createdOn,createdby]}]
         result = flags2.create_redflag()
 
         if result:
             # created
-            return jsonify({'message': 'flag successfully created'}), 201
+            return jsonify({'message': 'flag successfully created', 'flags':FLAGS}), 201
 
         # conflict
         return jsonify({'message': 'flag was not created, try again'}), 400
 
-        type = request_data['type']
-        location = request_data['location']
+        # type = request_data['type']
+        # location = request_data['location']
         description = request_data['description']
-        createdOn = request_data['createdOn']
+        createdOn= request_data['createdOn']
         createdby = request_data['createdby']
 
     except KeyError as item:

@@ -68,23 +68,18 @@ class User:
         else:
             print(availUsernames)
             return False
-    # def __str__(self):
-    #     return "user: {} firstname:{} lastname:{} othernames:{} username:{} phonenumber:{} with email {}:isadmin:{}".format(self.user_id ,self.firstname,self.lastname,self.othernames,self.username,
-    #     self.phonenumber,self.email, self.isAdmin)
-
+  
 
 class Redflag:
     """
     class for creating a redflag post 
     """
 
-    def __init__(self, flag_id, user_id, type, description, email, location, createdby):
+    def __init__(self, flag_id, type, description, location, createdby, createdOn):
         self.flag_id = flag_id
-        self.user_id = user_id
+        # self.user_id = user_id
         self.type = type
         self.description = description
-        self.email = email
-        self.status = self.status()[0]
         self.location = location
         self.createdOn = datetime.datetime.now()
         self.createdby = createdby
@@ -100,8 +95,8 @@ class Redflag:
         oldflagListLength = len(FLAGS)
         # create the list below with precise indexing as illustrated below
         # [0] = user_id, [1] = type, [2] = description, [3] = email, [4] = location, [5] =createdon [6] = created by
-        FLAGS.append({self.flag_id: [self.type, self.user_id, self.description,
-                                     self.email, self.location, self.createdOn, self.createdby]})
+        FLAGS.append({self.flag_id: [self.type, self.description,
+                                    self.location, self.createdOn, self.createdby]})
 
         if len(FLAGS) > oldflagListLength:
             # incase creating a redflag is successful return true.
@@ -114,7 +109,7 @@ class Redflag:
     def get_specific_flag(flag_id):
         """function to check whether a flag Exists or not. function return a boolean true if flag exists and
         false if it does not exist."""
-        index = None
+        # index = None
         global FLAGS
         if FLAGS:
             for x, y in enumerate(FLAGS, 0):

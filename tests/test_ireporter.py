@@ -1,13 +1,14 @@
 import unittest
+import os,sys
 from flask import Blueprint, Flask, request, json, jsonify, make_response, Response
 from flask import jsonify, request, Response, json
 from werkzeug.security import generate_password_hash, check_password_hash
-from main.models.model import Redflag, FLAGS
-from main.models.model import User
-from main.views.users import SECRETKEY
+from models.model import Redflag, FLAGS
+from models.model import User
+from views.users import SECRETKEY
 import app
-from main.views.users import loggedinuser
-from main.views.users import USERS
+from views.users import loggedinuser
+from views.users import USERS
 
 
 class TestUser(unittest.TestCase):

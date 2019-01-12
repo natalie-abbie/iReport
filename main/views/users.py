@@ -1,7 +1,7 @@
 from flask import Blueprint, Flask, jsonify, json, request, make_response
 import re
 import datetime
-from main.models.model import User, USERS
+from models.model import User, USERS
 import jwt
 from uuid import uuid4
 from functools import wraps
@@ -43,15 +43,25 @@ def register():
         else:
             username = request_data['username']
 
-        # valid phone number
-        if 'phonenumber' not in request_data.keys():
-            return jsonify({'Invalid': 'phone number should be atleast 10 characters'}), 400
+        # valid firstname
+        if 'firstname'  not in request_data.keys():
+            return jsonify({'Error': 'firstname missing'}), 400
+        else:
+            firstname = request_data['firstname']
 
-        if not len(request_data['phonenumber']) < 10:
+        if 'lastname' not in request_data.keys():
+            return jsonify({'Error': 'lastname missing'}), 
+        else:
+            lastname = request_data['lastname']
+
+        if 'othernames' not in request_data.keys():
+            return jsonify({'Error': 'field missing'}), 400   
+        else:
+            othernames = request_data['othernames']      
+
+        if len(request_data['phonenumber']) < 5:
             return jsonify({'Failed': 'phonenumber must be 10 characters'}), 400
 
-        if "[0-9]" not in request_data['phonenumber']:
-            return jsonify({'Invalid': 'phone number should only contain numbers'}), 400
         else:
             phonenumber = request_data['phonenumber']
 
@@ -80,10 +90,10 @@ def register():
                     return jsonify({'message': 'user already exists'}), 400
 
         password = generate_password_hash(password)
-        USERS.append({"userid": str(uuid4()), "username": username,
-                      "email": email, "password": password})
+        USERS.append({"userid": str(uuid4()), "firstname":firstname,"lastname":lastname,"othernames":othernames, "username": username,
+                      "email": email, "password": password, "phonenumber":phonenumber,"registeredOn":str(datetime.datetime.now())})
         # created
-        return jsonify({"message": "Account created successfully"}), 201
+        return jsonify({"message": "Account created successfully", "users":USERS}), 201
 
     except KeyError as item:
         return jsonify({'Error': str(item) + ' is missing'}), 400
