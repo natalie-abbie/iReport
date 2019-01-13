@@ -1,4 +1,3 @@
-from flask import json
 import datetime
 
 USERS = []  # global variable for users.

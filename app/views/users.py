@@ -1,7 +1,7 @@
 from flask import Blueprint, Flask, jsonify, json, request, make_response
 import re
 import datetime
-from models.model import User, USERS
+from app.models import User,USERS
 import jwt
 from uuid import uuid4
 from functools import wraps
