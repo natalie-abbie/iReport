@@ -1,6 +1,4 @@
 from flask import Flask, json, jsonify, request, Blueprint
-from views.users import user
-from views.redflag import flags
 import os
 from instance.config import configuration
 
