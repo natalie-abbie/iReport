@@ -3,6 +3,7 @@ import unittest
 from flask import json
 
 
+
 class TestUser(unittest.TestCase):
 
     def setUp(self):
@@ -11,31 +12,31 @@ class TestUser(unittest.TestCase):
 
     def test_user_registration_success(self):
         response = self.app.post('/api/v1/auth/register', content_type='application/json',
-                                    data=json.dumps({"firstname":"drichi",
-                                                     "lastname": "igama",
+                                    data=json.dumps({"firstname":"Abio",
+                                                     "lastname": "nataline",
                                                      "othernames": "if",
-                                                     "username": "igmafric",
+                                                     "username": "talie",
                                                      "phonenumber":"0700000000",
-                                                     "password": "igm123",
-                                                     "email": "igma@gmail.com",
+                                                     "password": "nats123",
+                                                     "email": "abio@gmail.com",
                                                      "isAdmin": "false"}))
         data = json.loads(response.data)
         self.assertEqual(201, response.status_code)
         self.assertEqual('Account created successfully', data['message'])
 
     def test_user_login_successful(self):
-        user= {"firstname":"drichi",
-                "lastname": "igama",
+        user= {"firstname":"Abio",
+                "lastname": "nataline",
                 "othernames": "if",
-                "username": "igmafric",
+                "username": "talie",
                 "phonenumber":"0700000000",
-                "password": "igm123",
-                "email": "igma@gmail.com",
+                "password": "nats123",
+                "email": "abio@gmail.com",
                 "isAdmin": "false"}
         response = self.app.post('/api/v1/auth/register', content_type='application/json',
                                     data=json.dumps(user))
         response = self.app.post('/api/v1/auth/login', content_type='application/json',
-                                    data=json.dumps({"username": "igmafric", "password": "igm123"}))
+                                    data=json.dumps({"username": "talie", "password": "nats123"}))
         data = json.loads(response.data)
         self.assertEqual('logged in successfully', data['message'])
         self.assertEqual(200, response.status_code)
@@ -43,15 +44,17 @@ class TestUser(unittest.TestCase):
     # def test_user_already_exists_registration(self):
     #     response = self.app.post('/api/v1/auth/register', content_type='application/json',
     #                                 data=json.dumps(
-    #                                     {"firstname":"drichi",
-    #                                                  "lastname": "igama",
+    #                                     {"firstname":"Abio",
+    #                                                  "lastname": "nataline",
     #                                                  "othernames": "if",
-    #                                                  "username": "igmafric",
-    #                                                  "phonenumber":"0700000000",
-    #                                                  "password": "igm123",
-    #                                                  "email": "igma@gmail.com",
+    #                                                  "username": "talie",
+    #                                                  "phonenumber":"07000000000",
+    #                                                  "password": "nats123",
+    #                                                  "email": "abio@gmail.com",
     #                                                  "isAdmin": "false"}
     #                                 ))
+    #     response = self.app.post('/api/v1/auth/register', content_type='application/json',
+    #                                 data=json.dumps({"firstname":"Abio","lastname":"nataline", "othernames":"if", "username": "talie", "phonenumber":"070000000000","password": "nats123","email":"abio@gmail.com"}))
     #     data = json.loads(response.data)
     #     self.assertEqual('user already exists', data['message'])
     #     self.assertEqual(400, response.status_code)
@@ -65,18 +68,16 @@ class TestUser(unittest.TestCase):
     #         'username should be five characters and above', data['message'])
 
     def test_missing_username_user_registration(self):
-        user= {"firstname":"drichi",
-                "lastname": "igama",
+        user= {"firstname":"Abio",
+                "lastname": "nataline",
                 "othernames": "if",
-                "username": "igmafric",
+                
                 "phonenumber":"0700000000",
-                "password": "igm123",
-                "email": "igma@gmail.com",
+                "password": "nats123",
+                "email": "abio@gmail.com",
                 "isAdmin": "false"}
         response = self.app.post('/api/v1/auth/register', content_type='application/json',
-                                    data=json.dumps(user))
-        response = self.app.post('/api/v1/auth/register', content_type='application/json',
-                                    data=json.dumps({"email": "user@email.com", "password": "password"}))
+                                    data=json.dumps(user))  
         data = json.loads(response.data)
         self.assertEqual(400, response.status_code)
         self.assertEqual('username is missing', data['message'])
@@ -88,21 +89,30 @@ class TestUser(unittest.TestCase):
     #     self.assertEqual(400, response.status_code)
     #     self.assertEqual('email is invalid, @ symbol missing', data['message'])
 
-    # def test_missing_email_user_registration(self):
-    #     response = self.app.post('/api/v1/auth/register', content_type='application/json',
-    #                                 data=json.dumps({"username": "somepassword", "password": "somepassword"}))
-    #     data = json.loads(response.data)
-    #     self.assertEqual(400, response.status_code)
-    #     self.assertEqual('email is missing', data['message'])
+    def test_missing_email_user_registration(self):
+        user= {"firstname":"Abio",
+                "lastname": "nataline",
+                "othernames": "if",
+                "username": "talie",
+                "phonenumber":"0700000000",
+                "password": "nats123",       
+                "isAdmin": "false"}
+        response = self.app.post('/api/v1/auth/register', content_type='application/json',
+                                    data=json.dumps(user))
+     
+        data = json.loads(response.data)
+        self.assertEqual(400, response.status_code)
+        self.assertEqual('email is missing', data['message'])
 
-    # def test_request_data_keys_user_registration(self):
-    #     response = self.app.post('/api/v1/auth/register', content_type='application/json',
-    #                                 data=json.dumps({"userid": 1, "username": "fsfsf", "password": "somepassword", "email": "some@email.com"}))
-    #     data = json.loads(response.data)
-    #     self.assertTrue(400, response.status_code)
-    #     self.assertNotEqual(4, data.keys())
+    def test_request_data_keys_user_registration(self):
+        response = self.app.post('/api/v1/auth/register', content_type='application/json',
+                                    data=json.dumps({"userid": 1, "username": "fsfsf", "password": "somepassword", "email": "some@email.com"}))
+        data = json.loads(response.data)
+        self.assertTrue(400, response.status_code)
+        # self.assertNotEqual(4, data.keys())
 
     def test_user_login_failed_wrong_username(self):
+       
         response = self.app.post('/api/v1/auth/login', content_type='application/json',
                                     data=json.dumps({"username": "tal", "password": "somepassword"}))
         data = json.loads(response.data)
@@ -111,13 +121,13 @@ class TestUser(unittest.TestCase):
         self.assertEqual(401, response.status_code)
 
     def test_user_login_failed_wrong_password(self):
-        user= {"firstname":"drichi",
-                "lastname": "igama",
+        user= {"firstname":"Abio",
+                "lastname": "nataline",
                 "othernames": "if",
-                "username": "igmafric",
+                "username": "talie",
                 "phonenumber":"0700000000",
-                "password": "igm123",
-                "email": "igma@gmail.com",
+                "password": "nats123",
+                "email": "abio@gmail.com",
                 "isAdmin": "false"}
         response = self.app.post('/api/v1/auth/register', content_type='application/json',
                                     data=json.dumps(user))
@@ -129,13 +139,13 @@ class TestUser(unittest.TestCase):
         self.assertEqual(401, response.status_code)
 
     def test_already_loggedin_user(self):
-        user= {"firstname":"drichi",
-                "lastname": "igama",
+        user= {"firstname":"Abio",
+                "lastname": "nataline",
                 "othernames": "if",
-                "username": "igmafric",
+                "username": "talie",
                 "phonenumber":"0700000000",
-                "password": "igm123",
-                "email": "igma@gmail.com",
+                "password": "nats123",
+                "email": "abio@gmail.com",
                 "isAdmin": "false"}
         response = self.app.post('/api/v1/auth/register', content_type='application/json',
                                     data=json.dumps(user))
@@ -159,18 +169,18 @@ class TestRedflag(unittest.TestCase):
                          data=json.dumps({"username": "talie", "password": "somepassword"}))
 
     def test_create_redflag_successful(self):
-        user= {"firstname":"drichi",
-                "lastname": "igama",
+        user= {"firstname":"Abio",
+                "lastname": "nataline",
                 "othernames": "if",
-                "username": "igmafric",
+                "username": "talie",
                 "phonenumber":"0700000000",
-                "password": "igm123",
-                "email": "igma@gmail.com",
+                "password": "nats123",
+                "email": "abio@gmail.com",
                 "isAdmin": "false"}
         self.app.post('/api/v1/auth/register', content_type='application/json',
                                     data=json.dumps(user))
         self.app.post('/api/v1/auth/login', content_type='application/json',
-                                    data=json.dumps({"username": "igmafric", "password": "igm123"}))
+                                    data=json.dumps({"username": "talie", "password": "nats123"}))
         response = self.app.post('/api/v1/create_redflag', content_type='application/json',
                                     data=json.dumps({"type": "corruption", "description": "some description of the corruption", "location": "kampala"}))
         data = json.loads(response.data)
@@ -179,27 +189,47 @@ class TestRedflag(unittest.TestCase):
 
 
 
-#     def test_flag_already_exists(self):
-#         response = self.app.post('/api/flag', content_type='application/json',
-#                                     data=json.dumps({"type": "corruption", "description": "some description of the corruption", "email": "abionatline@gmail.com", "location": "kampala", "createdby": "nats"}))
-#         data = json.loads(response.data)
-#         self.assertEqual('flag successfully created', data['message'])
-#         self.assertTrue(201, response.status_code)
+    # def test_flag_already_exists(self):
+    #     flags={
+    #             "location":"kyanja",
+    #             "type":"corruption",
+    #             "description":"emblezzing money for road construction"
+    #     }
+    #     response = self.app.post('/api/v1/create_flag', content_type='application/json',
+    #                                 data=json.dumps(flags))
+    #     data = json.loads(response.data)
+    #     self.assertEqual('flag successfully created', data['message'])
+    #     self.assertTrue(201, response.status_code)
 
-#     def test_short_description_create_redflag(self):
-#         response = self.app.post('/api/flag', content_type='application/json',
-#                                     data=json.dumps({"type": "corruption", "description": "some ", "email": "abionatline@gmail.com", "location": "kampala", "createdby": "nats"}))
-#         data = json.loads(response.data)
-#         self.assertEqual(
-#             'name of flag should be well defined', data['message'])
-#         self.assertEqual(400, response.status_code)
+    # def test_short_description_create_redflag(self):
 
-#     def test_type_missing_create_redflag(self):
-#         response = self.app.post('/api/flag', content_type='application/json',
-#                                     data=json.dumps({"description": "some description of the corruption", "email": "abionatline@gmail.com", "location": "kampala", "createdby": "nats"}))
-#         data = json.loads(response.data)
-#         self.assertEqual('flag type is missing', data['message'])
-#         self.assertEqual(400, response.status_code)
+    #     flags={
+    #             "location":"kyanja",
+    #             "type":"corruption",
+    #             "description":"emb"
+    #     }
+
+    #     response = self.app.post('/api/v1/created_redflag', content_type='application/json',
+    #                                 data=json.dumps(flags))
+    #     response = self.app.post('/api/v1/create_redflag', content_type='application/json',
+    #                                 data=json.dumps({"type": "corruption", "description": "some des", "location": "Bwaise"}))
+    #     data = json.loads(response.data)
+    #     self.assertEqual('description should be well defined', data['message'])
+    #     self.assertEqual(400, response.status_code)
+
+    # def test_type_missing_create_redflag(self):
+    #     flags={
+    #             "location":"kyanja",
+    #             "description":"emblezzment in some place"
+    #     }
+
+    #     response = self.app.post('/api/flag', content_type='application/json',
+    #                                 data=json.dumps(flags))
+    #     response = self.app.post('/api/v1/create_redflag', content_type='application/json',
+    #                                 data=json.dumps({ "description": "some des", "location": "Bwaise"}))
+    #     data = json.loads(response.data)
+    #     self.assertEqual('Flag type is missing', data['message'])
+    #     self.assertEqual(400, response.status_code)
 
 #     def test_location_missing_create_redflag(self):
 #         response = self.app.post('/api/flag', content_type='application/json',

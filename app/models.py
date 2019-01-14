@@ -22,7 +22,7 @@ class User:
         self.users_list = []
 
     def register(self, user_id, firstname, lastname, othernames, username, email, phonenumber, password, isAdmin):
-        """this function is for creating a new user. the fuction returns a boolean true if a user has been
+        """ creating a new user and returns a  true if a user has been
         successfully registered and false if otherwise."""
         oldUsersListLength = len(
             self.users_list)  # lets store the length of users_list before appending a new user.
@@ -50,7 +50,7 @@ class User:
             return True
 
     def checkUsernameExists(self, username):
-        """helper function to check whether username Exists before registering a new user. this function returns
+        """checks whether username Exists before registering a new user and returns
         a boolean true if the username already exists and false if the username is not yet used."""
         # lets loop through this global users_list and append all usernames to list availUsernames
         availUsernames = []
@@ -83,7 +83,7 @@ class Redflag:
         self.redflag_list = []
 
     def create_redflag(self):
-        """function for posting a redflag. funtion returns a boolean true if the redflag has been created and false 
+        """ posting a redflag. funtion returns true if the redflag has been created and false 
         if redflag is not created."""
         global FLAGS
         result = False
@@ -104,9 +104,7 @@ class Redflag:
 
     @staticmethod
     def get_specific_flag(flag_id):
-        """function to check whether a flag Exists or not. function return a boolean true if flag exists and
-        false if it does not exist."""
-        # index = None
+       
         global FLAGS
         if FLAGS:
             for x, y in enumerate(FLAGS, 0):
@@ -119,7 +117,7 @@ class Redflag:
 
     @staticmethod
     def update_flag(flag_id):
-        """this function is for updating flag details. function returns a index to update"""
+        """updating flag details. returns a index to update"""
         index = None
         global FLAGS
         redflag = []
@@ -136,7 +134,7 @@ class Redflag:
 
     @staticmethod
     def delete_flag(flag_id):
-        """this fuinction is responsible for deleting a flag"""
+        """ deleting a flag"""
         global FLAGS
         index = None
         if FLAGS:
@@ -149,8 +147,7 @@ class Redflag:
             return index
 
     def get_all_flags(self):
-        """this function return all flags that ar available. 
-        the function returns a list of all flags registered."""
+        """returns a list of all flags registered."""
         global FLAGS
         if FLAGS:
             return FLAGS
